@@ -55,6 +55,6 @@ Boolean AcquireWinchDataTCPIP(WinchStructPtr WinchPtr);
 int	InitWinch(WinchStructPtr);
 int ParsingWinch(WinchStructPtr);
 void *ReadWinchControl(void *arg);
-Boolean SendData2Winch(WinchStructPtr WinchPtr, unsigned long avgTime, float avgPress, float avgDepth, float avgTemp, float avgCond);
+Boolean SendData2Winch(WinchStructPtr WinchPtr, unsigned long CTDtime, float CTDpress,float CTDtemp, float CTDcond, float AltTime);
 
 #endif

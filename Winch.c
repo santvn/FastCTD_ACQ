@@ -211,20 +211,17 @@ Boolean AcquireWinchDataTCPIP(WinchStructPtr WinchPtr)
 }
 
 // send average data to winch via network
-Boolean SendData2Winch(WinchStructPtr WinchPtr, unsigned long avgTime, float avgPress, float avgDepth, float avgTemp, float avgCond)
+Boolean SendData2Winch(WinchStructPtr WinchPtr, unsigned long CTDtime, float CTDpress,float CTDtemp, float CTDcond, float AltTime)
 {
 	int result;
 	char dataSend[1014];
 	int len;
 	
-	// put time stamp, press, temp, cond,lat, lon into a string to send.
-//	sprintf(dataSend, "%lu,%f,%f,%f",avgTime,avgDepth,avgTemp,avgCond);
-    sprintf(dataSend, "%lu,%f,%f,%f",avgTime,avgPress,avgTemp,avgCond);
+    sprintf(dataSend, "%lu,%f,%f,%f,%f",CTDtime,CTDpress,CTDtemp,CTDcond,AltTime);
 
 	// JMK 23 April 05: Print data out to screen so we know that things are running...
     if (WinchPtr->printData == 2){
-//        fprintf(stdout, "Send to Winch: %lu,%f,%f,%f\n",avgTime,avgDepth,avgTemp,avgCond);
-        fprintf(stdout, "Send to Winch: %lu,%f,%f,%f\n",avgTime,avgPress,avgTemp,avgCond);
+        fprintf(stdout, "Send to Winch: %lu,%f,%f,%f,%f\n",CTDtime,CTDpress,CTDtemp,CTDcond,AltTime);
     }
 
 	// 1. send the length of data to winch
@@ -251,7 +248,7 @@ Boolean SendData2Winch(WinchStructPtr WinchPtr, unsigned long avgTime, float avg
     
     if (WinchPtr->printData == 2)
         printf("Send %d bytes to Winch: %s ",result,dataSend);
-printf("$OPGCTDE,avgTime= %lu,p= %f, t=%f, c=%f\n",avgTime,avgPress,avgTemp,avgCond);
+    printf("$OPGCTDE,CTDtime= %lu,p= %f, t=%f, c=%f, t=%f\n",CTDtime,CTDpress,CTDtemp,CTDcond,AltTime);
     printf("***** ------------------------------------------------------- *******\n\n");
 
     return TRUE;

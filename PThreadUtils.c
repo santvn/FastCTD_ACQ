@@ -124,9 +124,9 @@ void *TCPIPSocketServer(void *arg)
 	int result, val;
 	struct sockaddr_in address;
 	socklen_t addressLength = sizeof(address);
-	float avgPress = 0, avgCond = 0;
-	float avgTemp = 0, avgDepth = 0.0;
-	unsigned long avgTime =0;
+    float CTDpress = 0, CTDcond = 0;
+    float CTDtemp = 0, AltTime = 0.0;
+    unsigned long CTDtime =0;
 
 	FastCTDStruct *fCTDPtr = (FastCTDStructPtr)arg;
     
@@ -158,10 +158,13 @@ void *TCPIPSocketServer(void *arg)
 		{
 			// if get data from winch
 			if (!AcquireWinchDataTCPIP(&fCTDPtr->Winch)) break;
-			// average fish's data and send them to winch.
-			val = AverageFishData(&(fCTDPtr->CTD), &avgTime, &avgPress, &avgDepth, &avgTemp, &avgCond);
-
-			if (!SendData2Winch(&fCTDPtr->Winch, avgTime, avgPress, avgDepth, avgTemp, avgCond)) break;
+            // fish's data and send them to winch.
+            val = CurrentFishData(&(fCTDPtr->CTD), &CTDtime, &CTDpress, &CTDtemp, &CTDcond,&AltTime);
+            
+            if (!SendData2Winch(&fCTDPtr->Winch, CTDtime, CTDpress, CTDtemp, CTDcond,  AltTime))
+            {
+                break;
+            }
 		}
         // close the connection
 		if(fCTDPtr->Winch.TCPIPSocket.remoteSocketfd>0){ close (fCTDPtr->Winch.TCPIPSocket.remoteSocketfd);

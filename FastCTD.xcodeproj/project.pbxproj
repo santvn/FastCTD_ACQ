@@ -84,7 +84,6 @@
 		2CBFD7E2079EDE620096AAA4 /* Winch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Winch.h; sourceTree = "<group>"; };
 		2CBFD7E3079EDE620096AAA4 /* Winch.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Winch.c; sourceTree = "<group>"; };
 		8DD76FB20486AB0100D96B5E /* FastCTD */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FastCTD; sourceTree = BUILT_PRODUCTS_DIR; };
-		B587C3E015D1DF53006CA874 /* File */ = {isa = PBXFileReference; lastKnownFileType = text; name = File; path = ../../../Desktop/File; sourceTree = "<group>"; };
 		C6A0FF2C0290799A04C91782 /* FastCTD.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = FastCTD.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,7 +128,6 @@
 				2C4134AF075124860023FDCF /* CTD.h */,
 				2C4134A8075124310023FDCF /* CTD.c */,
 				2C838D950729D13A00872E76 /* FastCat_CTDdaq.h */,
-				B587C3E015D1DF53006CA874 /* File */,
 				2C838D960729D13A00872E76 /* FileUtils.h */,
 				2C838D970729D13A00872E76 /* Globals.h */,
 				2C838D980729D13A00872E76 /* PThreadUtils.h */,
@@ -195,7 +193,7 @@
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0610;
 			};
 			buildConfigurationList = F7E7279909FC7089000E8FBC /* Build configuration list for PBXProject "FastCTD" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -238,7 +236,6 @@
 		F7E7279609FC7089000E8FBC /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -254,7 +251,6 @@
 		F7E7279709FC7089000E8FBC /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				INSTALL_PATH = "$(HOME)/bin";
@@ -267,7 +263,6 @@
 		F7E7279809FC7089000E8FBC /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				INSTALL_PATH = "$(HOME)/bin";
 				PRODUCT_NAME = FastCTD;
